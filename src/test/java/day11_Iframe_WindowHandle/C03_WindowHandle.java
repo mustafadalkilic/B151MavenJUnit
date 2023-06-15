@@ -43,6 +43,8 @@ public class C03_WindowHandle extends TestBase {
 
         //youtube sayfasına geçiniz:
         driver.switchTo().window(youtubeWindowHandle);
+
+
         bekle(3);
 
 

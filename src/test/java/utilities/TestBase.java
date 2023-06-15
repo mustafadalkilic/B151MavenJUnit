@@ -9,38 +9,33 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
 
 import java.time.Duration;
+import java.util.ArrayList;
+import java.util.List;
 
 public abstract class TestBase {
     /*
-    TestBase class'ından obje oluşturmanın önüne geçmek için bu class'ı abstract yapabiliriz
-    Testbase testbase =new TestBase(); yani bu sekılde obje olusturmanın onune gecmıs oluruz
-    Bu class'a extends yaptigimiz test class'larindan ulabiliriz
-
+        TestBase class'ından obje oluşturmanın önüne geçmek için bu class'ı abstract yapabiliriz.
+    TestBase testBase = new TestBase(); yani bu şekilde obje oluşturmanın önüne geçmiş oluruz.
+    Bu class'a extends yaptığımız test class'larından ulaşabiliriz
      */
-
     protected WebDriver driver;
-
     @Before
     public void setUp() throws Exception {
-
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
-
-
     }
 
     @After
     public void tearDown() throws Exception {
-       driver.quit();
+       // driver.quit();
     }
 
-    //HARD WAIT(Bekleme Methodu)
-    public void bekle(int saniye) {
-
+    //HARD WAIT (Bekleme Methodu)
+    public void bekle(int saniye){
         try {
-            Thread.sleep(saniye * 1000);
+            Thread.sleep(saniye*1000);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
@@ -57,7 +52,7 @@ public abstract class TestBase {
     }
     //getTextAlert
     public String getTextAlert(){
-        return  driver.switchTo().alert().getText();
+        return driver.switchTo().alert().getText();
     }
 
     //sendKeysAlert
@@ -83,24 +78,15 @@ public abstract class TestBase {
         select.selectByValue(value);
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    //SwitchTo Window-1
+    public void switchToWindow(int index){
+        List<String> pencereler = new ArrayList<>(driver.getWindowHandles());
+        driver.switchTo().window(pencereler.get(index));
+    }
+    //SwitchTo Window-2
+    public void switchToWindow2(int index){
+        driver.switchTo().window(driver.getWindowHandles().toArray()[index].toString());
+    }
 
 
 }
