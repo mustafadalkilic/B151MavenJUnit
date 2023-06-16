@@ -129,48 +129,47 @@ public class C01_WindowHandles extends TestBase {
         //  https://the-internet.herokuapp.com/windows adresine gidin.
         driver.get("https://the-internet.herokuapp.com/windows");
 
-        //  ilk sayfadaki textin "Opening a new window" olduğunu test edin.
+        //  ilk sayfadaki textin “Opening a new window” olduğunu test edin.
         String actualText = driver.findElement(By.xpath("//h3")).getText();
         String expectedText = "Opening a new window";
-        Assert.assertEquals(expectedText,actualText);
+        Assert.assertEquals(expectedText, actualText);
 
-        //  ilk sayfa Title'ının "The Internet" olduğunu test edin.
+        //  ilk sayfa Title'ının “The Internet” olduğunu test edin.
         String actualTitle = driver.getTitle();
         String expectedTitle = "The Internet";
-        Assert.assertEquals(expectedTitle,actualTitle);
+        Assert.assertEquals(expectedTitle, actualTitle);
 
         //  "Click Here" butonuna tıklayın.
         driver.findElement(By.xpath("(//a)[2]")).click();//--> Kontrolümüz dışında Yeni bir sekme açıldı
         bekle(3);
 
-        //  ikinci sayfa Title'ının "New Window" olduğunu test edin.
-
+        //  ikinci sayfa Title'ının “New Window” olduğunu test edin.
         driver.switchTo().window(driver.getWindowHandles().toArray()[1].toString());
-       /*
-            Set ve ArrayList kullanmadan switchTo() methodu icine arguman olarak driver.getWindowHandles() methodu ile butun acilan
-            pencereli bir array olarak alip index belirterek istedigim pencereye gecis yapabilirim
+        /*
+        Set ve ArrayList kullanmadan switchTo().window() methodu içine argüman olarak driver.getWindowHandles()
+        methodunu ile bütün açılan pencereli bir array olarak alıp index belirterek isteğim pencereye geçiş yapabilirim.
          */
         String actualTitleNewWindow = driver.getTitle();
         String expectedTitleNewWindow = "New Window";
-        Assert.assertEquals(expectedTitleNewWindow,actualTitleNewWindow);
-    /*
-        getWindowHandles() methodunu kullanarak açılan tüm pencerelerin handle değerlerini bir arraylist'e atadık.
-    Index 0(sıfır)'dan başladığı için kontrolüm dışında açılan pencere 1. index de olduğundan
-     driver.switchTo().window(pencereler.get(1)); ile yeni açılan penceye geçiş yaptık
-     */
+        Assert.assertEquals(expectedTitleNewWindow, actualTitleNewWindow);
+        /*
+            getWindowHandles() methodunu kullanarak açılan tüm pencerelerin handle değerlerini bir arraylist'e atadık.
+        Index 0(sıfır)'dan başladığı için kontrolüm dışında açılan pencere 1. index de olduğundan
+         driver.switchTo().window(pencereler.get(1)); ile yeni açılan penceye geçiş yaptık
+         */
 
         bekle(2);
-        //  ilk sayfaya dönün ve Title'ının "The Internet" olduğunu test edin.
-
+        //  ilk sayfaya dönün ve Title'ının “The Internet” olduğunu test edin.
+        driver.switchTo().window(driver.getWindowHandles().toArray()[0].toString());
         String ilkSayfaActualTitle = driver.getTitle();
         String ilkSayfaExpectedTitle = "The Internet";
-        Assert.assertEquals(ilkSayfaExpectedTitle,ilkSayfaActualTitle);
+        Assert.assertEquals(ilkSayfaExpectedTitle, ilkSayfaActualTitle);
 
         //  ikinci sayfaya tekrar geçin.
-
+        driver.switchTo().window(driver.getWindowHandles().toArray()[1].toString());
         bekle(2);
         //  ilk sayfaya tekrar dönün.
-
+        driver.switchTo().window(driver.getWindowHandles().toArray()[0].toString());
         bekle(2);
     }
 
