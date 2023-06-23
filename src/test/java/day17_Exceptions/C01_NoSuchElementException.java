@@ -5,6 +5,7 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebElement;
 import utilities.TestBase;
 
@@ -54,6 +55,8 @@ public class C01_NoSuchElementException extends TestBase {
 
         WebElement aramaKutusu = driver.findElement(By.cssSelector("//*[@type='sAearch']"));
         aramaKutusu.sendKeys("qa", Keys.ENTER);
+
+
 
       /*
         org.openqa.selenium.InvalidSelectorException: xpath ile aldigimiz bir webelementin locate'ini
