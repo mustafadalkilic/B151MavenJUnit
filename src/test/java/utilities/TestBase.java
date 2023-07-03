@@ -211,8 +211,20 @@ public abstract class TestBase {
         extentHtmlReporter.config().setReportName(reportName);
 
 
-    }
 
+    }
+    //Click Method
+
+    public void click (WebElement element){
+        try {
+            element.click();
+        } catch (Exception e) {
+            JavascriptExecutor js = (JavascriptExecutor) driver;
+            js.executeScript("arguments[0].click;",element);
+
+        }
+
+    }
 
 
 

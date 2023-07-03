@@ -59,6 +59,8 @@ kayarız.
 
         //Capitals.xlsx dosyasından 1. satır 2. sütundaki hücreyi yazdırın
         FileInputStream fis = new FileInputStream("src/test/java/resourses/Capitals (2).xlsx");
+
+
         Workbook workbook = WorkbookFactory.create(fis);
         String satir1Sutun2=workbook.getSheet("Sheet1").getRow(0).getCell(1).toString();
         System.out.println("1. Satır 1. Sütun Bilgisi = "+satir1Sutun2);
