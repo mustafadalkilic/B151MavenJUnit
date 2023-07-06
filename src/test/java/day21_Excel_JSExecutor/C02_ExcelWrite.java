@@ -68,6 +68,9 @@ public class C02_ExcelWrite {
     Dosyayi kapatalim
      */
 
+
+
+
         /*
     sayfaya gidin cerezi kapatin
     https://www.mercedes-benz.com.tr/?group=all&subgroup=see-all&view=BODYTYPE
@@ -81,6 +84,51 @@ public class C02_ExcelWrite {
 
 
     }
+
+    @Test
+    public void test04() throws IOException {
+
+          /*
+    ODEV2
+    Yeni bir test method olusturalim writeExcelTest()
+    Adimlari takip ederek 1.satira kadar gidelim
+    5.hucreye yeni bir cell olusturalim
+    Olusturdugumuz hucreye "Nufus" yazdiralim
+    2.satir nufus kolonuna 1500000 yazdiralim
+    10.satir nufus kolonuna 250000 yazdiralim
+    15.satir nufus kolonuna 54000 yazdiralim
+    Dosyayi kaydedelim
+    Dosyayi kapatalim
+     */
+
+
+        String dosyaYolu = "src/test/java/Practice_10/ulkeler.xlsx";
+        FileInputStream fis = new FileInputStream(dosyaYolu);
+        Workbook workbook = WorkbookFactory.create(fis);
+        workbook.getSheet("Sayfa1").getRow(0).createCell(4).setCellValue("Nufus");
+        workbook.getSheet("Sayfa1").getRow(1).createCell(4).setCellValue("1500000");
+        workbook.getSheet("Sayfa1").getRow(9).createCell(4).setCellValue("250000");
+        workbook.getSheet("Sayfa1").getRow(14).createCell(4).setCellValue("54000");
+
+        FileOutputStream fos = new FileOutputStream(dosyaYolu);
+        workbook.write(fos);
+        fos.close();
+        workbook.close();
+
+
+
+
+
+
+
+    }
+
+
+
+
+
+
+
 
 
 
