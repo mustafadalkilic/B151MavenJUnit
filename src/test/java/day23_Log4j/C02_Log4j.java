@@ -22,7 +22,7 @@ public class C02_Log4j extends TestBase {
 
         //Basligin Egitim icerdigini dogrulayalim
         Assert.assertFalse(driver.getTitle().contains("Egitim"));
-        logger.error("Sayfa basligi Egitim yazisi icermiyor");
+        logger.error("Sayfa basligi Egitim yazisi icermiyorr");
 
 
 
